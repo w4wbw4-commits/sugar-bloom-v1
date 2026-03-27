@@ -1,0 +1,138 @@
+/* ===== Sugar Bloom — Salla Theme Styles ===== */
+
+:root {
+  --background: 350 100% 99%;
+  --foreground: 330 15% 27%;
+  --card: 350 100% 99%;
+  --card-foreground: 330 15% 27%;
+  --primary: 350 100% 88%;
+  --primary-foreground: 330 15% 20%;
+  --secondary: 330 30% 95%;
+  --secondary-foreground: 330 15% 27%;
+  --muted: 330 20% 94%;
+  --muted-foreground: 330 10% 55%;
+  --accent: 350 60% 90%;
+  --accent-foreground: 330 15% 27%;
+  --border: 330 30% 90%;
+  --ring: 350 100% 88%;
+  --radius: 0.75rem;
+
+  /* Sugar Bloom custom tokens */
+  --rose-gold: 8 55% 71%;
+  --lavender: 320 30% 88%;
+  --cream: 30 50% 96%;
+  --gradient-hero: linear-gradient(135deg, hsl(350 100% 97%), hsl(330 30% 95%), hsl(350 100% 99%));
+  --gradient-card: linear-gradient(180deg, hsl(350 100% 98%), hsl(350 100% 99%));
+  --gradient-announcement: linear-gradient(90deg, hsl(var(--rose-gold)), hsl(var(--primary)), hsl(var(--rose-gold)));
+  --shadow-card: 0 2px 20px -4px hsl(var(--primary) / 0.15);
+  --shadow-product: 0 8px 30px -8px hsl(var(--primary) / 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  direction: rtl;
+}
+
+.font-display { font-family: 'Tajawal', sans-serif; }
+.font-body { font-family: 'Tajawal', sans-serif; }
+
+/* ===== Buttons ===== */
+.btn-sugar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--rose-gold)));
+  color: hsl(var(--primary-foreground));
+  font-weight: 700;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Tajawal', sans-serif;
+}
+.btn-sugar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px hsl(var(--primary) / 0.4);
+}
+
+.btn-sugar-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--border));
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: 'Tajawal', sans-serif;
+}
+.btn-sugar-outline:hover {
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+  transform: translateY(-1px);
+}
+
+/* ===== Section Padding ===== */
+.section-padding { padding: 4rem 1rem; }
+@media (min-width: 1024px) { .section-padding { padding: 5rem 2rem; } }
+
+/* ===== Container ===== */
+.container { max-width: 1280px; margin: 0 auto; }
+
+/* ===== Animations ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 25s linear infinite; }
+
+@keyframes scale-in {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+.animate-scale-in { animation: scale-in 0.3s ease-out; }
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.3s ease-out; }
+
+/* ===== Utility Colors ===== */
+.text-primary { color: hsl(var(--primary)); }
+.text-primary-foreground { color: hsl(var(--primary-foreground)); }
+.text-foreground { color: hsl(var(--foreground)); }
+.text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.text-rose-gold { color: hsl(var(--rose-gold)); }
+.text-border { color: hsl(var(--border)); }
+.bg-primary { background-color: hsl(var(--primary)); }
+.bg-primary-foreground { background-color: hsl(var(--primary-foreground)); }
+.bg-card { background-color: hsl(var(--card)); }
+.bg-background { background-color: hsl(var(--background)); }
+.bg-secondary { background-color: hsl(var(--secondary)); }
+.bg-foreground { background-color: hsl(var(--foreground)); }
+.border-border { border-color: hsl(var(--border)); }
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--rose-gold)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

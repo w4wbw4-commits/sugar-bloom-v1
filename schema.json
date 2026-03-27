@@ -1,0 +1,150 @@
+{
+  "name": "Sugar Bloom",
+  "version": "1.0.0",
+  "settings": [
+    {
+      "title": "الألوان",
+      "key": "colors",
+      "fields": [
+        {
+          "title": "اللون الأساسي (Baby Pink)",
+          "key": "primary_color",
+          "type": "color",
+          "default": "#FFF0F3"
+        },
+        {
+          "title": "لون التمييز (Rose Gold)",
+          "key": "accent_color",
+          "type": "color",
+          "default": "#E29587"
+        },
+        {
+          "title": "لون الخلفية",
+          "key": "background_color",
+          "type": "color",
+          "default": "#FFFBFC"
+        },
+        {
+          "title": "لون النصوص",
+          "key": "text_color",
+          "type": "color",
+          "default": "#4A3540"
+        },
+        {
+          "title": "لون اللافندر",
+          "key": "lavender_color",
+          "type": "color",
+          "default": "#E8D5E0"
+        },
+        {
+          "title": "لون ذهبي وردي",
+          "key": "rose_gold_color",
+          "type": "color",
+          "default": "#B76E79"
+        }
+      ]
+    },
+    {
+      "title": "الشعار",
+      "key": "branding",
+      "fields": [
+        {
+          "title": "شعار المتجر",
+          "key": "logo",
+          "type": "image",
+          "default": ""
+        },
+        {
+          "title": "اسم المتجر",
+          "key": "store_name",
+          "type": "text",
+          "default": "Sugar Bloom"
+        }
+      ]
+    },
+    {
+      "title": "شريط الإعلانات",
+      "key": "announcement",
+      "fields": [
+        {
+          "title": "تفعيل شريط الإعلانات",
+          "key": "enabled",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "title": "نص الإعلان الأول",
+          "key": "text_1",
+          "type": "text",
+          "default": "خصم 20% على جميع العطور"
+        },
+        {
+          "title": "نص الإعلان الثاني",
+          "key": "text_2",
+          "type": "text",
+          "default": "شحن مجاني للطلبات فوق 200 ريال"
+        },
+        {
+          "title": "نص الإعلان الثالث",
+          "key": "text_3",
+          "type": "text",
+          "default": "وصل حديثاً - مجموعة الربيع"
+        }
+      ]
+    },
+    {
+      "title": "القسم الرئيسي (Hero)",
+      "key": "hero",
+      "fields": [
+        {
+          "title": "العنوان الرئيسي",
+          "key": "title",
+          "type": "text",
+          "default": "أناقتك تبدأ من هنا"
+        },
+        {
+          "title": "الوصف",
+          "key": "description",
+          "type": "textarea",
+          "default": "اكتشفي أجمل العطور والإكسسوارات المصممة خصيصاً لتعكس جمالك وأنوثتك"
+        },
+        {
+          "title": "صورة البطل",
+          "key": "image",
+          "type": "image",
+          "default": ""
+        },
+        {
+          "title": "نص الزر",
+          "key": "button_text",
+          "type": "text",
+          "default": "تسوقي الآن"
+        }
+      ]
+    },
+    {
+      "title": "التذييل",
+      "key": "footer",
+      "fields": [
+        {
+          "title": "البريد الإلكتروني",
+          "key": "email",
+          "type": "text",
+          "default": "info@sugarbloom.sa"
+        },
+        {
+          "title": "رقم الهاتف",
+          "key": "phone",
+          "type": "text",
+          "default": "+966 50 000 0000"
+        },
+        {
+          "title": "العنوان",
+          "key": "address",
+          "type": "text",
+          "default": "الرياض، المملكة العربية السعودية"
+        }
+      ]
+    }
+  ]
+}

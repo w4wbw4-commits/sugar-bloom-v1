@@ -1,0 +1,16 @@
+{% if theme.settings.announcement.enabled %}
+<div class="w-full overflow-hidden" style="background: var(--gradient-announcement)">
+  <div class="flex animate-marquee whitespace-nowrap py-2.5">
+    {% for i in 1..2 %}
+      <div class="flex items-center gap-8 px-4 text-sm font-body font-medium text-primary-foreground">
+        <span class="flex items-center gap-2">🎁 {{ theme.settings.announcement.text_1 | default('خصم 20% على جميع العطور') }}</span>
+        <span class="opacity-50">✦</span>
+        <span class="flex items-center gap-2">🚚 {{ theme.settings.announcement.text_2 | default('شحن مجاني للطلبات فوق 200 ريال') }}</span>
+        <span class="opacity-50">✦</span>
+        <span class="flex items-center gap-2">✨ {{ theme.settings.announcement.text_3 | default('وصل حديثاً - مجموعة الربيع') }}</span>
+        <span class="opacity-50">✦</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

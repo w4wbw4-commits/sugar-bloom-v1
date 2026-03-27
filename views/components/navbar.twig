@@ -1,0 +1,75 @@
+<nav class="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
+  <div class="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8">
+    {# Mobile menu toggle #}
+    <button class="lg:hidden text-foreground" id="mobile-menu-toggle" aria-label="القائمة">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+
+    {# Desktop navigation #}
+    <div class="hidden lg:flex items-center gap-8 font-body text-sm font-medium text-foreground">
+      {% for category in categories %}
+        <a href="{{ category.url }}" class="hover:text-primary transition-colors">{{ category.name }}</a>
+      {% endfor %}
+    </div>
+
+    {# Logo #}
+    <a href="{{ link('/') }}" class="font-display text-2xl lg:text-3xl font-bold text-foreground tracking-wide">
+      {% if theme.settings.branding.logo %}
+        <img src="{{ theme.settings.branding.logo }}" alt="{{ store.name }}" class="h-10">
+      {% else %}
+        {{ theme.settings.branding.store_name | default('Sugar') }} <span class="text-primary">Bloom</span> 🌸
+      {% endif %}
+    </a>
+
+    {# Action icons #}
+    <div class="flex items-center gap-3 lg:gap-5 text-foreground">
+      {# Search #}
+      <button class="hover:text-primary transition-colors hidden lg:block" aria-label="بحث" onclick="salla.event.emit('search::open')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+
+      {# Account #}
+      {% if customer %}
+        <a href="{{ link('customer.account') }}" class="hover:text-primary transition-colors hidden lg:block" aria-label="حسابي">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+      {% else %}
+        <a href="{{ link('customer.login') }}" class="hover:text-primary transition-colors hidden lg:block" aria-label="تسجيل الدخول">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+      {% endif %}
+
+      {# Wishlist #}
+      <a href="{{ link('wishlist') }}" class="hover:text-primary transition-colors relative" aria-label="المفضلة">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        {% if wishlist_count > 0 %}
+          <span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-bold">
+            {{ wishlist_count }}
+          </span>
+        {% endif %}
+      </a>
+
+      {# Cart #}
+      <button onclick="salla.event.emit('cart::open')" class="hover:text-primary transition-colors relative" aria-label="السلة">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-bold cart-count">
+          {{ cart.count }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  {# Mobile menu #}
+  <div class="lg:hidden bg-card border-t border-border px-4 pb-4 hidden" id="mobile-menu">
+    <div class="flex flex-col gap-3 font-body text-sm font-medium text-foreground py-2">
+      {% for category in categories %}
+        <a href="{{ category.url }}" class="py-2 hover:text-primary transition-colors">{{ category.name }}</a>
+      {% endfor %}
+      {% if customer %}
+        <a href="{{ link('customer.account') }}" class="py-2 hover:text-primary transition-colors">حسابي</a>
+      {% else %}
+        <a href="{{ link('customer.login') }}" class="py-2 hover:text-primary transition-colors">تسجيل الدخول</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

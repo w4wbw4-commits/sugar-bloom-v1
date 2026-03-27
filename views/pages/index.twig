@@ -1,0 +1,138 @@
+{% extends 'layouts/master.twig' %}
+
+{% block content %}
+{# ===== Hero Section ===== #}
+<section class="relative overflow-hidden" style="background: var(--gradient-hero)">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="flex flex-col lg:flex-row items-center gap-8 py-16 lg:py-24">
+      <div class="flex-1 text-center lg:text-right space-y-6 z-10">
+        <p class="font-body text-sm font-semibold text-primary tracking-widest uppercase">✨ مجموعة حصرية</p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+          {{ theme.settings.hero.title | default('أناقتك تبدأ من هنا') }} 🌸
+        </h1>
+        <p class="font-body text-muted-foreground text-lg max-w-md mx-auto lg:mr-0 lg:ml-auto">
+          {{ theme.settings.hero.description | default('اكتشفي أجمل العطور والإكسسوارات المصممة خصيصاً لتعكس جمالك وأنوثتك') }}
+        </p>
+        <div class="flex gap-4 justify-center lg:justify-end">
+          <a href="{{ link('products') }}" class="btn-sugar text-base">{{ theme.settings.hero.button_text | default('تسوقي الآن') }}</a>
+          <a href="{{ link('categories') }}" class="btn-sugar-outline text-base">اكتشفي المزيد</a>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <div class="relative">
+          <div class="absolute inset-0 rounded-full bg-primary/10 blur-3xl scale-110"></div>
+          {% if theme.settings.hero.image %}
+            <img src="{{ theme.settings.hero.image }}" alt="{{ store.name }}" class="relative w-72 md:w-80 lg:w-96 rounded-3xl animate-float" style="box-shadow: var(--shadow-product)">
+          {% else %}
+            <img src="{{ asset('assets/images/hero.jpg') }}" alt="{{ store.name }}" class="relative w-72 md:w-80 lg:w-96 rounded-3xl animate-float" style="box-shadow: var(--shadow-product)">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute top-10 left-10 w-32 h-32 rounded-full bg-lavender/20 blur-2xl"></div>
+  <div class="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-primary/10 blur-2xl"></div>
+</section>
+
+{# ===== Featured Products ===== #}
+<section class="section-padding" style="background: var(--gradient-card)">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-body text-sm font-semibold text-primary tracking-widest uppercase mb-2">اخترنا لكِ</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">منتجات مميزة 💖</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {% for product in products %}
+        {% include 'components/product-card.twig' with { product: product } %}
+      {% endfor %}
+    </div>
+    <div class="text-center mt-10">
+      <a href="{{ link('products') }}" class="btn-sugar-outline">عرض الكل</a>
+    </div>
+  </div>
+</section>
+
+{# ===== Categories ===== #}
+<section class="section-padding bg-background">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-body text-sm font-semibold text-primary tracking-widest uppercase mb-2">تصفحي</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">الأقسام ✨</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for category in categories %}
+        <a href="{{ category.url }}" class="group relative overflow-hidden rounded-2xl aspect-[4/5]" style="box-shadow: var(--shadow-card)">
+          <img src="{{ category.image }}" alt="{{ category.name }}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent"></div>
+          <div class="absolute bottom-6 left-0 right-0 text-center">
+            <h3 class="font-display text-2xl font-bold text-primary-foreground mb-1">{{ category.name }}</h3>
+            <p class="font-body text-sm text-primary-foreground/80">{{ category.products_count }} منتج</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ===== New Arrivals ===== #}
+<section class="section-padding bg-background">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-body text-sm font-semibold text-primary tracking-widest uppercase mb-2">وصل حديثاً</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">جديدنا 🌷</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {% for product in new_arrivals %}
+        {% include 'components/product-card.twig' with { product: product } %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ===== Reviews ===== #}
+<section class="section-padding" style="background: var(--gradient-hero)">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-body text-sm font-semibold text-primary tracking-widest uppercase mb-2">آراء عميلاتنا</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">ماذا قالوا عنا 💬</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for review in store.reviews %}
+        <div class="bg-card rounded-2xl p-6 text-center space-y-4" style="box-shadow: var(--shadow-card)">
+          <svg class="mx-auto text-primary/40" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          <div class="flex justify-center gap-0.5">
+            {% for i in 1..5 %}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="{{ i <= review.rating ? 'currentColor' : 'none' }}" stroke="currentColor" class="{{ i <= review.rating ? 'text-rose-gold' : 'text-border' }}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            {% endfor %}
+          </div>
+          <p class="font-body text-muted-foreground leading-relaxed">{{ review.text }}</p>
+          <div class="w-10 h-10 rounded-full bg-secondary mx-auto flex items-center justify-center font-display font-bold text-secondary-foreground">
+            {{ review.name | first }}
+          </div>
+          <p class="font-body font-semibold text-foreground">{{ review.name }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ===== Instagram Gallery ===== #}
+<section class="section-padding bg-background">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-body text-sm font-semibold text-primary tracking-widest uppercase mb-2">تابعينا</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">@sugarbloom 📸</h2>
+    </div>
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
+      {% for i in 1..6 %}
+        <a href="{{ store.social.instagram }}" class="group relative aspect-square overflow-hidden rounded-xl" target="_blank">
+          <img src="{{ asset('assets/images/instagram-' ~ i ~ '.jpg') }}" alt="Instagram" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300 flex items-center justify-center">
+            <svg class="text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

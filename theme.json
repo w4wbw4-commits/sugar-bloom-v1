@@ -1,0 +1,11 @@
+{
+  "name": "Sugar Bloom",
+  "version": "1.0.0",
+  "author": "Mohammed Al-Dousari",
+  "engine": "twig",
+  "description": "متجر إكسسوارات نسائية فاخرة - Baby Pink & Rose Gold",
+  "thumbnail": "assets/images/theme-preview.jpg",
+  "support": {
+    "email": "info@sugarbloom.sa"
+  }
+}
