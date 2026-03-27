@@ -1,46 +1,16 @@
 {
-  "name": "Sugar Bloom",
+  "name": "Sugar Bloom Settings",
   "version": "1.0.0",
   "settings": [
     {
-      "name": "الألوان",
-      "id": "colors",
+      "name": "General",
+      "id": "general_settings",
       "fields": [
         {
-          "name": "اللون الأساسي (Baby Pink)",
-          "id": "primary_color",
-          "type": "color",
-          "default": "#FFF0F3"
-        },
-        {
-          "name": "لون التمييز (Rose Gold)",
-          "id": "accent_color",
-          "type": "color",
-          "default": "#E29587"
-        },
-        {
-          "name": "لون الخلفية",
-          "id": "background_color",
-          "type": "color",
-          "default": "#FFFBFC"
-        }
-      ]
-    },
-    {
-      "name": "معلومات المتجر",
-      "id": "store_info",
-      "fields": [
-        {
-          "name": "البريد الإلكتروني",
-          "id": "email",
+          "name": "Store Email",
+          "id": "store_email",
           "type": "text",
           "default": "info@sugarbloom.sa"
-        },
-        {
-          "name": "رقم الهاتف",
-          "id": "phone",
-          "type": "text",
-          "default": "+966 50 000 0000"
         }
       ]
     }
